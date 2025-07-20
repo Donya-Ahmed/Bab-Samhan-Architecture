@@ -1,42 +1,46 @@
 # Architectural Requirements
 
-This is a living document with the architectural requirements of FullSnack's new customer-facing web application.
+This is a living document with the architectural requirements of the **User Management Dashboard with QR-Based vCard Sharing**.
 
 For more information, check out the [Project Spec](./project-spec.md).
 
-## Business Goals
+---
 
-| Stakeholder                 | Goal                                                                                         | Context                                                                                              |
-| --------------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Julio (CEO)                 | Increase number of customer orders by 100% in one year                                       | As a new player in the market, FullSnack needs to attract new customers with their exciting new app. |
-| Megan (VP of Engineering)   | Improve team velocity and cycle time by 25%                                                  | The new architecture should allow developers to ship features faster without compromising quality.   |
-| Lauren (Frontend Developer) | Ship code to production confidently, without fear of breaking her teammate's features        | The current big ball of mud architecture makes it hard to visualize the impact of a code change.     |
-| Maxi (Customer Persona)     | Order delicious food from his phone or computer and have it delivered as quickly as possible | Maxi is hungry and wants to eat a taco plate right now.                                              |
+## Constraints
 
-## Contraints
+| Constraint                                                       | Context                                                                                                      |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| [Technical] Must use **React** (frontend) and **Node.js + MongoDB** (backend) | The current development team has expertise in React and Node.js; MongoDB was chosen for flexibility.         |
+| [Technical] Must be responsive and functional on tablets & desktop | Admins primarily use laptops or tablets to manage employees.                                                 |
+| [Business] Must ship MVP within 1 month                           | The digital business card feature is required for an upcoming company networking event.                       |
+| [Technical] QR codes and vCards must be generated in the backend  | Ensures security and consistent data handling across all clients.                                            |
 
-| Constraint                                                              | Context                                                                                                                              |
-| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| [Technical] Must be deployed on AWS infrastructure                      | Our DevOps team only provides support and monitoring for AWS services.                                                               |
-| [Technical] Must be responsive and fully functional on mobile devices   | Over half of our traffic comes from mobile devices and our native mobile application won't be ready to launch for at least 6 months. |
-| [Business] Must ship to production by November 2024 (4 months from now) | FullSnack is planning a massive marketing launch in November and this product is a key component of the marketing strategy.          |
+---
 
 ## Quality Attributes
 
-| Quality Attribute | Scenario                                                                                                      | Priority |
-| ----------------- | ------------------------------------------------------------------------------------------------------------- | -------- |
-| Performance       | A user on a mobile device with a 4G connection can load the app in 5 seconds or less.                         | High     |
-| Scalability       | The codebase should be modularized to allow and increasing number of frontend developers to work in parallel. | High     |
-| Accessibility     | The app should comply with WCAG 2.2 accessibility standards.                                                  | Medium   |
-| Performance       | Real-time updates should be broadcast to all listening clients within 15 seconds.                             | Low      |
-| Deployability     | Code changes should be deployed to production within 10 minutes of starting a release.                        | Low      |
+| Quality Attribute | Scenario                                                                                       | Priority |
+| ----------------- | ---------------------------------------------------------------------------------------------- | -------- |
+| Usability         | An admin with no technical background can create and share an employee profile in under 2 mins | High     |
+| Security          | Only authenticated admins can access or modify employee records                                 | High     |
+| Compatibility     | vCard files should import seamlessly into iOS, Android, and desktop contact managers            | High     |
+| Performance       | QR code generation and vCard download should complete in less than 3 seconds                    | Medium   |
+| Scalability       | The system should be able to handle 10,000+ employee records without performance degradation    | Medium   |
+| Deployability     | Code changes should be deployable to production within 30 minutes                               | Low      |
+
+---
 
 ## Influential Functional Requirements
 
-_To be completed... by you! See Exercise 2 for more details._
+- Admins can create, edit, and delete employee profiles with required and optional fields.
+- The backend automatically generates and serves QR codes linking to downloadable vCard (.vcf) files.
+- Admins can view or download QR codes directly from the dashboard.
+
+---
 
 ## Other Influencers
 
-- Currently, the frontend team is a single team of 4 developers, but this is expected to change as the number of developers is expected to triple in size over the next year.
-- Every frontend developer on the team has experience working with React and Next.js, and some of them are also comfortable working with Vue.js and Laravel.
-- Not everyone on the team is comfortable working with TypeScript.
+- The current development team consists of **1 frontend React developers** and **1 backend Node.js developer**.
+- All team members are familiar with **React** and **Tailwind CSS**; only one developer has advanced TypeScript experience (gradual adoption planned).
+- No mobile app is planned; the MVP is strictly web-based.
+

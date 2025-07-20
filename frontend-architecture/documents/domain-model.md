@@ -2,25 +2,38 @@
 
 ## Entities
 
-- `Customer`
-- `Restaurant`
-- `RestaurantCategory`
-- `ShoppingCart`
+- `Admin`
+- `Employee`
 
 ## Attributes and Operations
 
-### `Customer`
+### `Admin`
 
 - ID: string
 - Name: string
 - Email: string
-- `addToFavorites(Restaurant.ID)`
+- `createAdmin()`
+- `editAdmin(id)`
+- `removeAdmin(id)`
+- `viewAdmin(id)`
+- `createEmployee()`
+- `editEmployee(id)`
+- `removeEmployee(id)`
+- `viewEmployee(id)`
+- `ShareQr()`
+- `DownloadQr()`
 
-### `Restaurant`
+
+### `Employee`
 
 - ID: string
 - Name: string
-- Description: string
-- Logo URL: string
+- Email: string
 - Address: string
-- `searchMenuItems(string)`
+- Company: string
+- Phone Number: string
+- Website: string
+- Job Title: string
+
+
+

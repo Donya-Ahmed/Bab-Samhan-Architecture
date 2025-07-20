@@ -1,23 +1,35 @@
-# Order Placement Sequence
+# Create user and download or share Sequence
 
-```mermaid
 sequenceDiagram
-    title Order Placement Sequence
-    participant Customer
-    participant Web App
-    participant Core API
-    participant DB
-    participant Payments System
+    participant A as Admin
+    participant D as Dashboard (Frontend)
+    participant B as Backend (Node.js API)
+    participant DB as Database (MongoDB)
+    participant QR as QR & vCard Service (Backend Logic)
 
-    Customer->>Web App: Click order button
-    Web App->>Core API: Sends Order ID and <br /> payment information
-    Core API->>DB: Get total by order ID
-    DB-->>Core API: Return order total
-    Core API->>Payments System: Send payment request
-    Payments System-->>Core API: Return payment confirmation
-    Core API-->>Web App: Return confirmation
-    Web App-->>Customer: Show confirmation message
-```
+    %% Admin Creates Employee
+    A->>D: Fill and submit "Create Employee" form
+    D->>B: POST /employees (employee data)
+    B->>DB: Save employee record
+    DB-->>B: Return saved employee (with ID)
+    B-->>D: Respond with success (employee created)
+    D-->>A: Show success message
+
+    %% Request QR Code Generation
+    A->>D: Request to view QR Code
+    D->>B: GET /employees/{id}/qrcode
+    B->>QR: Generate QR Code + vCard (.vcf)
+    QR-->>B: Return QR Code image URL + vCard link
+    B-->>D: Respond with QR Code image URL
+    D-->>A: Display QR Code image
+
+    %% Download or Share vCard
+    A->>D: Click "Download" or "Share"
+    D->>B: GET /employees/{id}/vcard
+    B->>QR: Serve vCard file (.vcf)
+    QR-->>B: Return vCard file
+    B-->>D: Respond with vCard file download
+    D-->>A: Prompt to download or share
 
 ## Mermaid Live URL
 
