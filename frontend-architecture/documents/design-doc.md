@@ -98,27 +98,7 @@ The User Management Dashboard will be developed as a React-based Single Page App
 - Responsive UI fixes and basic security updates.  
 - Deploy.
 
-### Phase 1: Discovery and Planning (July 2024 - August 2024)
 
-- Finalize requirements and gather detailed specifications.
-- Design the architecture and create detailed technical documentation.
-
-### Phase 2: Initial Development (September 2024 - October 2024)
-
-- Set up the project structure and configure the development environment.
-- Implement core modules: Home, Login, Search, and Profile.
-
-### Phase 3: Feature Development (October 2024 - November 2024)
-
-- Implement remaining modules: Delivery, Pickup, Restaurant, Shopping Cart, and Menu Item.
-- Integrate real-time updates using WebSockets.
-- Conduct performance and scalability testing.
-
-### Phase 4: Testing and Deployment (November 2024)
-
-- Perform comprehensive end-to-end testing (manual and automated.)
-- Deploy to staging environment.
-- Deploy to production and monitor for issues.
 
 ## 6. Risks and Open Questions
 
