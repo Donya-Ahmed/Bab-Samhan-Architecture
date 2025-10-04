@@ -61,6 +61,3 @@ It allowed me to:
 - [LinkedIn](www.linkedin.com/in/donya-abo-shama-6976b5232)  
 
 ---
-
-## License
-This project is licensed under the MIT License.
